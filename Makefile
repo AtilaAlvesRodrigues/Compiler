@@ -1,4 +1,4 @@
-OBJECTS= 	./build/compiler.o \
+zOBJECTS= 	./build/compiler.o \
 			./build/cprocess.o \
 			./build/lexer.o \
 			./build/token.o \
