@@ -1,0 +1,10 @@
+//-----------------------Arquivo responsavel por mostrar a Arvore -----------------------
+
+void print_Tree(struct node *node,int level){
+    if(node l= null){
+        print(node,level);
+        level++;
+        print_Tree(node->EXP.LEFT);
+        print_Tree(node->EXP.RIGTH);
+    }
+}
