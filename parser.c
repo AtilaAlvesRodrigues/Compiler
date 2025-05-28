@@ -98,6 +98,11 @@ return 0;
 }
 //
 
+void parse_identifier(struct history* history) { // LAB5
+assert(token_peek_next()->type == NODE_TYPE_IDENTIFIER);
+parse_single_token_to_node();
+}
+
 int parse_expressionable_single(struct history* history) {
 struct token* token = token_peek_next();
 if (!token) return -1;
@@ -108,6 +113,11 @@ case TOKEN_TYPE_NUMBER:
 parse_single_token_to_node();
 res = 0;
 break;
+
+case TOKEN_TYPE_IDENTIFIER: // LAB5
+res = 0; parse_identifier(history);
+break;
+
 case TOKEN_TYPE_OPERATOR:
 parse_exp(history);
 res = 0;
@@ -133,6 +143,11 @@ case TOKEN_TYPE_IDENTIFIER:
 case TOKEN_TYPE_STRING:
 parse_expressionable(history_begin(0));
 break;
+
+case TOKEN_TYPE_KEYWORD:
+parse_keyword_for_global();
+break;
+
 default:
 break;
 }
