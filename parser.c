@@ -122,6 +122,12 @@ case TOKEN_TYPE_OPERATOR:
 parse_exp(history);
 res = 0;
 break;
+
+case TOKEN_TYPE_KEYWORD: // LAB5
+parse_keyword(history);
+res = 0; 
+break;
+
 default: break;
 }
 return res;
