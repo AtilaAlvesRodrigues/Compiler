@@ -282,7 +282,7 @@ void parser_get_datatype_tokens(struct token** datatype_token, struct token** da
 *datatype_token = token_next();
 struct token* next_token = token_peek_next();
 if (token_is_primitive_keyword(next_token)) {
-*datatype_secundary_token = next_token;
+*datatype_secundary_token = next_token; 
 token_next();
 }
 }
@@ -313,10 +313,10 @@ token->sval = sval;
 return token;
 }
 
-int parser_get_pointer_depth() { // LAB5
+int parser_get_pointer_depth() { // LAB5 (CORRIGIDO)
 int depth = 0;
-struct token* token = token_peek_next();
-while (token && token->type == TOKEN_TYPE_OPERATOR && S_EQ(token->sval, "*")) {
+struct token* token = NULL;
+while ((token = token_peek_next()) && (token->type == TOKEN_TYPE_OPERATOR) && S_EQ(token->sval, "*")) {
 depth++;
 token_next();
 }
