@@ -214,6 +214,13 @@ struct compile_process {
     struct vector* node_tree_vec;   /* LAB3: Raiz da arvore de analise*/
 
     FILE* ofile;
+    struct { struct scope* root;
+    struct scope* current;
+    } scope;
+    struct { struct vector* table;
+    struct vector* tables;
+    } symbols;
+    
 };
 
 /* BEGIN - LAB 3 ---------------------------------*/
@@ -325,3 +332,23 @@ char* operators[MAX_OPERATORS_IN_GROUP];
 int associativity;
 };
 
+//
+enum {
+SYMBOL_TYPE_NODE,
+SYMBOL_TYPE_NATIVE_FUNCTION,
+SYMBOL_TYPE_UNKNOWN
+};
+struct symbol {
+const char* name;
+int type;
+void* data;
+};
+struct scope {
+int flags;
+// void*
+struct vector* entities;
+// Quantidade total de bytes do escopo.
+size_t size;
+// NULL se nao tiver pai.
+struct scope* parent;
+};
