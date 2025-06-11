@@ -284,6 +284,13 @@ struct node {int type;
     struct node* right;
     const char* op;
     } exp;
+    struct var { struct datatype type;
+    const char* name;
+    struct node* val;
+    } var;
+    struct varlist {// Lista de variaveis struct node*
+    struct vector* list;
+    } var_list;
     };
     };
 
@@ -352,3 +359,5 @@ size_t size;
 // NULL se nao tiver pai.
 struct scope* parent;
 };
+
+bool token_is_operator(struct token* token, const char* val);
